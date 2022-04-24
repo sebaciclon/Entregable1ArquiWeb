@@ -35,7 +35,7 @@ public class DAOFactura implements DAO<Factura> {
 				"idFactura INT," +
 				"idCliente INT," +
 				"PRIMARY KEY (idFactura)," +
-				"FOREIGN KEY(idCliente)," +
+				"FOREIGN KEY(idCliente)" +
 				"references cliente(idCliente))";
 		conn.prepareStatement(factura).execute();
 		conn.commit();

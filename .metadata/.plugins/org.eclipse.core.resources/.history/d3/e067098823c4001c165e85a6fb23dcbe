@@ -31,15 +31,15 @@ public class DAOFactura implements DAO<Factura> {
 	public void crearTabla(Connection conn) throws SQLException {
 		conn = ConexionMySQL.conectar();
 				
-		String factura = "CREATE TABLE factura(" +
-				"idFactura INT," +
-				"idCliente INT," +
-				"PRIMARY KEY (idFactura)," +
-				"FOREIGN KEY(idCliente)," +
-				"references cliente(idCliente))";
-		conn.prepareStatement(factura).execute();
-		conn.commit();
-		conn.close();
+			String factura = "CREATE TABLE factura(" +
+					"idFactura INT," +
+					"idCliente INT," +
+					"PRIMARY KEY (idFactura))," +
+					"FOREIGN KEY(idCliente)" +
+					"references cliente(idCliente))";
+			conn.prepareStatement(factura).execute();
+			conn.commit();
+			conn.close();
 	}
 
 }

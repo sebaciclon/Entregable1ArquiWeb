@@ -13,7 +13,7 @@ public class DAOFactura implements DAO<Factura> {
 	@Override
 	public void cargar(CSVParser datos, Connection conn) throws SQLException {
 		conn = ConexionMySQL.conectar();
-		String insert = "INSERT INTO factura (idFactura, idCliente) VALUES (?, ?)"; 
+		String insert = "INSERT INTO persona (idFactura, idCliente) VALUES (?, ?)"; 
 		
 		for(CSVRecord fila: datos) {
 			
@@ -25,21 +25,22 @@ public class DAOFactura implements DAO<Factura> {
 			ps.close();
 		}
 		conn.close();
+		
 	}
 
 	@Override
 	public void crearTabla(Connection conn) throws SQLException {
 		conn = ConexionMySQL.conectar();
 				
-		String factura = "CREATE TABLE factura(" +
-				"idFactura INT," +
-				"idCliente INT," +
-				"PRIMARY KEY (idFactura)," +
-				"FOREIGN KEY(idCliente)," +
-				"references cliente(idCliente))";
-		conn.prepareStatement(factura).execute();
-		conn.commit();
-		conn.close();
+			String factura = "CREATE TABLE factura(" +
+					"idFactura INT," +
+					"idCliente INT," +
+					"PRIMARY KEY (idFactura))," +
+					"FOREIGN KEY(idCliente)" +
+					"references cliente(idCliente))";
+			conn.prepareStatement(factura).execute();
+			conn.commit();
+			conn.close();
 	}
 
 }

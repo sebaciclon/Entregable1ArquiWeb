@@ -15,14 +15,14 @@ public class DAOCliente implements DAO<Cliente> {
 	@Override
 	public void cargar(CSVParser datos, Connection conn) throws SQLException {
 		conn = ConexionMySQL.conectar();
-		String insert = "INSERT INTO persona (idCliente, nombre, valor) VALUES (?, ?, ?)"; 
+		String insert = "INSERT INTO cliente (idCliente, nombre, email) VALUES (?, ?, ?)"; 
 		
 		for(CSVRecord fila: datos) {
 			
 			PreparedStatement ps = conn.prepareStatement(insert);
-			ps.setInt(1, Integer.parseInt(fila.get("idCliente")));
+			//ps.setInt(1, Integer.parseInt(fila.get("idCliente")));
 			ps.setString(2, fila.get("nombre"));
-			ps.setFloat(3, Float.parseFloat(fila.get("valor")));
+			ps.setString(3, fila.get("email"));
 			ps.executeUpdate();
 			conn.commit();
 			ps.close();
@@ -34,12 +34,12 @@ public class DAOCliente implements DAO<Cliente> {
 	public void crearTabla(Connection conn) throws SQLException {
 		conn = ConexionMySQL.conectar();
 		
-		String Cliente = "CREATE TABLE cliente(" +
+		String cliente = "CREATE TABLE cliente(" +
 				"idCliente INT," +
 				"nombre VARCHAR(500)," +
 				"email VARCHAR(150)," +
 				"PRIMARY KEY (idCliente))";
-		conn.prepareStatement(Cliente).execute();
+		conn.prepareStatement(cliente).execute();
 		conn.commit();
 		conn.close();
 	}

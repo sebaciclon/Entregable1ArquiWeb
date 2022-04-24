@@ -34,8 +34,8 @@ public class DAOFactura implements DAO<Factura> {
 		String factura = "CREATE TABLE factura(" +
 				"idFactura INT," +
 				"idCliente INT," +
-				"PRIMARY KEY (idFactura)," +
-				"FOREIGN KEY(idCliente)," +
+				"PRIMARY KEY (idFactura))," +
+				"FOREIGN KEY(idCliente)" +
 				"references cliente(idCliente))";
 		conn.prepareStatement(factura).execute();
 		conn.commit();
