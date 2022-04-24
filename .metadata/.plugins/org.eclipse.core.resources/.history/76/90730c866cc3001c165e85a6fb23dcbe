@@ -1,0 +1,10 @@
+package dao;
+
+import org.apache.commons.csv.CSVParser;
+
+public interface DAO<T> {
+	
+	public void cargar(CSVParser datos);
+	public void crearTabla();
+
+}

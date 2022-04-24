@@ -1,0 +1,20 @@
+package dao;
+
+import org.apache.commons.csv.CSVParser;
+import modelo.Cliente;
+
+public class DAOCliente implements DAO<Cliente> {
+
+	@Override
+	public void cargar(CSVParser datos) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void crearTabla() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
