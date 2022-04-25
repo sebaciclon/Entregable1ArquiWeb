@@ -1,0 +1,15 @@
+package DAO;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import org.apache.commons.csv.CSVParser;
+
+import DAOFactory.ConexionMySQL;
+
+public interface DAO<T> {
+	
+	public void cargar(CSVParser datos, Connection conexion) throws SQLException;
+	public void crearTabla(Connection conn) throws SQLException;
+
+}

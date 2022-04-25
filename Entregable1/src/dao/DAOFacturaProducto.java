@@ -11,9 +11,12 @@ import DAOFactory.ConexionMySQL;
 import modelo.FacturaProducto;
 
 public class DAOFacturaProducto implements DAO<FacturaProducto>{
+	
+	private Connection conn;
+	
 
 	@Override
-	public void cargar(CSVParser datos, Connection conn) throws SQLException {
+	public void cargar(CSVParser datos) throws SQLException {
 		conn = ConexionMySQL.conectar();
 		String insert = "INSERT INTO facturaProducto (idFactura, idProducto, cantidad) VALUES (?, ?, ?)"; 
 		
@@ -32,7 +35,7 @@ public class DAOFacturaProducto implements DAO<FacturaProducto>{
 	}
 
 	@Override
-	public void crearTabla(Connection conn) throws SQLException {
+	public void crearTabla() throws SQLException {
 		conn = ConexionMySQL.conectar();
 		
 		String facturaProducto = "CREATE TABLE facturaProducto(" +

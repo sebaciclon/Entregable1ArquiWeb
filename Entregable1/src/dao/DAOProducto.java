@@ -12,9 +12,12 @@ import DAOFactory.ConexionMySQL;
 import modelo.Producto;
 
 public class DAOProducto implements DAO<Producto>{
+	
+	private Connection conn;
+	
 
 	@Override
-	public void cargar(CSVParser datos, Connection conn) throws SQLException {
+	public void cargar(CSVParser datos) throws SQLException {
 		conn = ConexionMySQL.conectar();
 		String insert = "INSERT INTO producto (idProducto, nombre, valor) VALUES (?, ?, ?)"; 
 		
@@ -33,7 +36,7 @@ public class DAOProducto implements DAO<Producto>{
 	}
 
 	@Override
-	public void crearTabla(Connection conn) throws SQLException {
+	public void crearTabla() throws SQLException {
 		conn = ConexionMySQL.conectar();
 		
 		String producto = "CREATE TABLE producto(" +
@@ -47,7 +50,7 @@ public class DAOProducto implements DAO<Producto>{
 		
 	}
 	
-	public Producto productoMasRecaudo(Connection conn) throws SQLException {
+	public Producto productoMasRecaudo() throws SQLException {
 		conn = ConexionMySQL.conectar();
 		Producto productoMasRecaudo;
 		

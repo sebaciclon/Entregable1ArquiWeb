@@ -14,10 +14,11 @@ import modelo.Cliente;
 
 public class DAOCliente implements DAO<Cliente> {
 	
-	//private Connection conn;
-
+	private Connection conn;
+	
+	
 	@Override
-	public void cargar(CSVParser datos, Connection conn) throws SQLException {
+	public void cargar(CSVParser datos) throws SQLException {
 		conn = ConexionMySQL.conectar();
 		String insert = "INSERT INTO cliente (idCliente, nombre, email) VALUES (?, ?, ?)"; 
 		
@@ -35,7 +36,7 @@ public class DAOCliente implements DAO<Cliente> {
 	}
 
 	@Override
-	public void crearTabla(Connection conn) throws SQLException {
+	public void crearTabla() throws SQLException {
 		conn = ConexionMySQL.conectar();
 		
 		String cliente = "CREATE TABLE cliente(" +
@@ -48,7 +49,7 @@ public class DAOCliente implements DAO<Cliente> {
 		conn.close();
 	}
 	
-	public ArrayList<Cliente> clientesMasFacturo(Connection conn) throws SQLException {
+	public ArrayList<Cliente> clientesMasFacturo() throws SQLException {
 		conn = ConexionMySQL.conectar();
 		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 		

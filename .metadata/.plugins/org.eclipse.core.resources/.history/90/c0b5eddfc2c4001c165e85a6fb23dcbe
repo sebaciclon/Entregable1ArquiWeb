@@ -1,0 +1,25 @@
+package main;
+
+import DAO.DAO;
+import DAO.DAOCliente;
+import DAO.DAOFactura;
+import DAO.DAOFacturaProducto;
+import DAO.DAOProducto;
+import modelo.Cliente;
+import modelo.Factura;
+import modelo.FacturaProducto;
+import modelo.Producto;
+
+public class Main {
+	
+	private static DAO<Cliente> daoCliente = new DAOCliente();
+	private static DAO<Factura> daoFactura = new DAOFactura();
+	private static DAO<FacturaProducto> daoFacturaProducto = new DAOFacturaProducto();
+	private static DAO<Producto> daoProducto = new DAOProducto();
+		
+	public static void main(String[] args)  {
+		
+		
+		
+		
+}

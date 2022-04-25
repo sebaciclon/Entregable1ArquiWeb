@@ -1,0 +1,21 @@
+package main;
+
+import DAO.DAO;
+import DAO.DAOCliente;
+import DAOFactory.ConexionMySQL;
+import modelo.Cliente;
+
+public class Main {
+	
+	private static DAO<Cliente> daoCliente = new DAOCliente();
+	private static DAO<Cliente> daoFactura = new DAOCliente();
+	private static DAO<Cliente> daoFacturaProducto = new DAOCliente();
+	private static DAO<Cliente> daoProducto = new DAOCliente();
+	private static ConexionMySQL conexion = new ConexionMySQL();
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}

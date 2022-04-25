@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="dao.DAO"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.InvocationTargetException"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="org.apache.commons.csv.CSVRecord"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="conexion.ConexionMySQL"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="DAO.DAO"/>
+    <fullyQualifiedTypeName name="modelo.Cliente"/>
+    <fullyQualifiedTypeName name="modelo.Factura"/>
+    <fullyQualifiedTypeName name="modelo.FacturaProducto"/>
+    <fullyQualifiedTypeName name="modelo.Producto"/>
+    <fullyQualifiedTypeName name="java.io.FileReader"/>
+    <fullyQualifiedTypeName name="org.apache.commons.csv.CSVFormat"/>
+    <fullyQualifiedTypeName name="org.apache.commons.csv.CSVParser"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="DAO.DAOCliente"/>
+    <fullyQualifiedTypeName name="DAO.DAOFactura"/>
+    <fullyQualifiedTypeName name="DAO.DAOFacturaProducto"/>
+    <fullyQualifiedTypeName name="DAO.DAOProducto"/>
+    <fullyQualifiedTypeName name="DAOFactory.AbstractFactory"/>
+    <fullyQualifiedTypeName name="DAOFactory.ConexionMySQL"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,52 @@
+package main;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+
+import DAO.DAO;
+import DAO.DAOCliente;
+import DAOFactory.ConexionMySQL;
+import modelo.Cliente;
+
+public class Main {
+	
+	private static DAO<Cliente> daoCliente = new DAOCliente();
+	private static DAO<Cliente> daoFactura = new DAOCliente();
+	private static DAO<Cliente> daoFacturaProducto = new DAOCliente();
+	private static DAO<Cliente> daoProducto = new DAOCliente();
+	private static ConexionMySQL conexion = new ConexionMySQL();
+	
+	public static void main(String[] args) throws FileNotFoundException, IOException {
+		
+		@SuppressWarnings("deprecation")
+		CSVParser clientes = CSVFormat.DEFAULT.withHeader().parse(new FileReader("./src/archivosCSV/clientes.csv"));
+		
+		@SuppressWarnings("deprecation")
+		CSVParser facturas = CSVFormat.DEFAULT.withHeader().parse(new FileReader("./src/archivosCSV/facturas.csv"));
+		
+		@SuppressWarnings("deprecation")
+		CSVParser facturaProducto = CSVFormat.DEFAULT.withHeader().parse(new FileReader("./src/archivosCSV/facturaProductos.csv"));
+		
+		@SuppressWarnings("deprecation")
+		CSVParser productos = CSVFormat.DEFAULT.withHeader().parse(new FileReader("./src/archivosCSV/productos.csv"));
+		
+		daoCliente.cargar(clientes);
+		daoFactura.cargar(facturas);
+		daoFacturaProducto.cargar(facturaProducto);
+		daoProducto.cargar(productos);
+		
+		clienteDAO.insertarDatos(datosClientes);
+		facturaDAO.insertarDatos(datosFacturas);
+		productoDAO.insertarDatos(datosProductos);
+		facturaproductoDAO.insertarDatos(datosFacturasProductos);
+		
+		
+		System.out.println(facturaDAO.productoConMasRecaudacion() + System.lineSeparator());
+		System.out.println((clienteDAO.mejoresClientes()));
+	}
+
+}
