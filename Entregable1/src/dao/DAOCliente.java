@@ -1,11 +1,15 @@
-package dao;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import conexion.ConexionMySQL;
+
+import DAOFactory.ConexionMySQL;
 import modelo.Cliente;
 
 public class DAOCliente implements DAO<Cliente> {
@@ -20,7 +24,7 @@ public class DAOCliente implements DAO<Cliente> {
 		for(CSVRecord fila: datos) {
 			
 			PreparedStatement ps = conn.prepareStatement(insert);
-			//ps.setInt(1, Integer.parseInt(fila.get("idCliente")));
+			ps.setInt(1, Integer.parseInt(fila.get("idCliente")));
 			ps.setString(2, fila.get("nombre"));
 			ps.setString(3, fila.get("email"));
 			ps.executeUpdate();
@@ -42,6 +46,27 @@ public class DAOCliente implements DAO<Cliente> {
 		conn.prepareStatement(cliente).execute();
 		conn.commit();
 		conn.close();
+	}
+	
+	public ArrayList<Cliente> clientesMasFacturo(Connection conn) throws SQLException {
+		conn = ConexionMySQL.conectar();
+		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+		
+		String select = "SELECT c.*, SUM(p.valor * fp.cantidad) AS mejoresClientes" +
+				"FROM factura f NATURAL JOIN facturaProducto fp NATURAL JOIN producto p" +
+				"GROUP BY f.idCliente" +
+				"ORDER BY mejoresClientes DESC";
+		PreparedStatement ps = conn.prepareStatement(select);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			Cliente cliente = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3));
+			clientes.add(cliente);	
+		}
+		conn.commit();
+		conn.close();
+		ps.close();
+		rs.close();
+		return clientes;
 	}
 
 	

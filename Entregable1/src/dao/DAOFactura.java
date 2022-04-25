@@ -1,11 +1,12 @@
-package dao;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import conexion.ConexionMySQL;
+
+import DAOFactory.ConexionMySQL;
 import modelo.Factura;
 
 public class DAOFactura implements DAO<Factura> {
